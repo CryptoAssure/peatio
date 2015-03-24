@@ -44,7 +44,7 @@ en:
         key: Key
         is_auth: Is Auth
       fund_source:
-        address: Address
+        address: Account Number
         category: Category
         label: Label
       account:
@@ -272,56 +272,22 @@ en:
           sum: limit sum price %{l} ~ %{h}
           precision: minimum precision %{p}
   dollars:
-    icbc: Industryand Commercial Dollar of China
-    cbc: Construction Dollar of China
-    bc: Dollar of China
-    bcm: Dollar of Communications
-    abc: Agriculture Dollar of China
-    cmb: China Merchants Dollar Ltd
-    cmbc: China Minsheng Dollaring Co., Ltd
-    cncb: China CITIC Dollar
-    hxb: Hua Xia Dollar Co., Ltd.
-    cib: Industrial Dollar Co., Ltd
-    spdb: Shanghai Pudong Development Dollar
-    bob: Dollar of Beijing
-    ceb: China Everbright Dollar CO.LTD
-    sdb: Shenzhen Development Dollar
-    pab: Ping An Dollar Co., Ltd.
-    gdb: Guangdong Development Dollar
-    psbc: Postal Savings Dollar of China
+    bofn: Bank of NuBot
   market:
     currency:
       btc: BTC
       usd: usd
-      doge: DOGE
-      pts: PTS
-      ltc: LTC
   currency:
     satoshi:
       key: BTC
       code: BTC
       name: Bitcoin
       format: '0,0.0000'
-    bitsharesx:
-      key: BTS
-      code: BTSX
-      name: BitsharesX
-      format: '0,0.0000'
-    renminbi:
+    dollar:
       key: usd
-      code: usd
-      name: Chinese Yuan
+      code: USD
+      name: US Dollar
       format: '0,0.00'
-    dogecoin:
-      key: DOG
-      code: DOGE
-      name: Dogecoin
-      format: '0,0.0000'
-    protoshare:
-      key: PTS
-      code: PTS
-      name: Protoshare
-      format: '0,0.0000'
   datagrid:
     empty: no data found
     filters:
@@ -344,7 +310,7 @@ en:
         currency_text: Currency
         aasm_state_text: State
         member_name: Member
-    dollar_deposits_grid:
+    bank_deposits_grid:
       columns:
         sn: SN
         created_at: At
@@ -463,7 +429,7 @@ en:
     satoshi:
       key: Block Chain
       title: Bitcoin Deposits
-      intro: Deposit bitcoin from your own wallet address to Peatio account
+      intro: Deposit bitcoin from your own wallet address to Nubot account
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
@@ -509,17 +475,17 @@ en:
         dollar: Dollar
         label: Label
         account: Account
-        address: Address
+        address: Account Number
         action: Action
         delete: Delete
         are_you_sure: Are you sure?
       new:
-        selector: Select Dollar
+        selector: Select Bank
         uid: Account Number
         label: Label
         label_placeholder: Fill any content
         address: Address
-        extra_hint: If your dollar is no longer in the list, please contact customer service
+        extra_hint: If your bank is no longer in the list, please contact customer service
     history:
       transaction:
         Deposit: Deposit
@@ -645,7 +611,7 @@ en:
       view_open_tickets: View open tickets
     account_versions:
       index:
-        description: Every transaction and every penny of income in Peatio are well
+        description: Every transaction and every penny of income in Nubot are well
           documented and exhaustive.
     api_tokens:
       user_tokens:
@@ -706,7 +672,7 @@ en:
           this page, we present you our liabilities. We also provide you a way to
           verify that your account balance is indeed part of our liabilities.
         how-to-verify: How to verify an exchange is solvent?
-        how-to-verify-uri: https://peatio.com/documents/liability_proof
+        how-to-verify-uri: https://nubot.com/documents/liability_proof
       liability_data:
         liability-proof-generating: Proof of Liability generation in process, please
           come back after 30 minutes.
@@ -1046,15 +1012,15 @@ en:
       panel: Login
       new:
         title: Login my account
-        intro: Login Peatio now for you to exchange.
+        intro: Login Nubot now for you to exchange.
       failure:
         title: Login my account
-        intro: Login Peatio now for you to exchange.
+        intro: Login Nubot now for you to exchange.
     identities:
       panel: Create Account
       new:
         title: Create My Account
-        intro: This will be your only ID on Peatio which is necessary for your exchange
+        intro: This will be your only ID on Nubot which is necessary for your exchange
           , deposit and withdrawal . please fill it out carefully.
       edit:
         panel: My Account
@@ -1147,7 +1113,7 @@ en:
         otp: Password on the authenticator
       fund_source:
         label: Label
-        address: Address
+        address: Account
         category: Category
       session:
         email: Sign In E-mail
@@ -1294,7 +1260,7 @@ en:
       trade: Submit and cancel orders
     authorizations:
       new:
-        title: Peatio Application Authorization
+        title: Nubot Application Authorization
         authorize_html: Authorize <strong class='text-info'>%{name}</strong> to use
           your account?
         scopes: 'This application will be able to:'
@@ -1429,41 +1395,41 @@ en:
 
   mailer:
     dear_user: Dear user,
-    signature: Thanks,<br/>The Peatio Team
+    signature: Thanks,<br/>The Nubot Team
     please_contact: If it's not you, please <a href='mailto:%{contact_mail}'>contact us</a> ASAP.
     footer: This is an automatically generated email, please do not reply, if you have any question, please <a href="mailto:%{contact_mail}">contact us</a>.
   comment_mailer:
     admin_notification:
-      subject: "[PEATIO] User reply a ticket"
+      subject: "[NUBOT] User reply a ticket"
       notification_content: User %{email} reply a ticket, please follow the link below to see the detail
     user_notification:
-      subject: "[PEATIO] Your ticket got a new reply"
+      subject: "[NUBOT] Your ticket got a new reply"
       notification_content: 'Your ticket got a new reply, please follow the link below to see the detail:'
   deposit_mailer:
     accepted:
-      subject: "[Peatio] Your deposit has been credited into your account"
+      subject: "[Nubot] Your deposit has been credited into your account"
       content: Your %{currency} deposit has been credited into your account.
   member_mailer:
     notify_signin:
-      subject: "[PEATIO] You have just signed in"
+      subject: "[NUBOT] You have just signed in"
       just_signed_in: You have just signed in.
     google_auth_activated:
-      subject: "[PEATIO] Google authenticator activated"
+      subject: "[NUBOT] Google authenticator activated"
       google_auth_activated: You have activated google authenticator successfully
     google_auth_deactivated:
-      subject: "[PEATIO] Google authenticator deactivated"
+      subject: "[NUBOT] Google authenticator deactivated"
       google_auth_deactivated: You have deactivated google authenticator successfully
     sms_auth_activated:
-      subject: "[PEATIO] SMS authenticator activated"
+      subject: "[NUBOT] SMS authenticator activated"
       sms_auth_activated: You have activated SMS authenticator successfully
     sms_auth_deactivated:
-      subject: "[PEATIO] SMS authenticator deactivated"
+      subject: "[NUBOT] SMS authenticator deactivated"
       sms_auth_deactivated: You have deactivated SMS authenticator successfully
     reset_password_done:
-      subject: "[PEATIO] Your password changed"
+      subject: "[NUBOT] Your password changed"
       successful: Your password has been changed successfully.
     phone_number_verified:
-      subject: "[PEATIO] Your phone number verified"
+      subject: "[NUBOT] Your phone number verified"
       verified: 'Your phone number verified: %{phone_number}'
   system_mailer:
     daily_stats:
@@ -1476,39 +1442,39 @@ en:
       trades_change_total: Trades Changes Total
   ticket_mailer:
     admin_notification:
-      subject: "[PEATIO] User created a new ticket"
+      subject: "[NUBOT] User created a new ticket"
       admin_notification_content: User %{email} created a new ticket, please follow the link below to see the detail
     author_notification:
-      subject: "[PEATIO] Thank you for submit ticket"
+      subject: "[NUBOT] Thank you for submit ticket"
       thanks_for_submit_ticket: Thank you for submit ticket to us, we will get back to you as soon as possible.
   token_mailer:
     activation:
-      subject: "[Peatio] Account Activation"
-      click_to_verify: 'Thank you for signing up on Peatio, please follow this link to verify your Email:'
+      subject: "[Nubot] Account Activation"
+      click_to_verify: 'Thank you for signing up on Nubot, please follow this link to verify your Email:'
       unable_to_click: Copy and open the link in your browser if you are unable to click and visit it.
       link_expire: The link expires in 30 minutes.
     reset_password:
-      subject: "[Peatio] Please Reset Your Password"
+      subject: "[Nubot] Please Reset Your Password"
       hi: Hi,
       follow_the_link: 'Please follow this link to reset your password within 30 minutes:'
   withdraw_mailer:
     submitted:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Nubot] Your withdraw state update"
       content: The request of your %{currency} withdrawal has been successfully submitted, We will process it as soon as possible. Please be patient with us. Contact us if you have any questions.
     processing:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Nubot] Your withdraw state update"
       content: The request of your %{currency} withdrawal is in process. Please be patient with us. Contact us if you have any questions.
     done:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Nubot] Your withdraw state update"
       content: The request of your %{currency} withdrawal is complete. Please check it out. Contact us if you have any questions.
     withdraw_state:
-      subject: "[Peatio] Your withdraw state update"
+      subject: "[Nubot] Your withdraw state update"
       your_state: 'Your withdrawal state: '
 
   'true': true
   'false': false
   view_on_github: View on Github
-  slogan: An open-source crypto-currency exchange for world.
+  slogan: NuBot Proving Grounds
   tags:
     vip: VIP
     hero: Hero Member
@@ -1522,9 +1488,9 @@ en:
   gon:
     ask: Ask
     bid: Bid
-    brand: Peatio Exchange
+    brand: NuBot Development Exchange
     notification:
-      title: Peatio Exchange
+      title: NuBot Development Exchange
       enabled: Notification enabled.
       new_trade: "%{kind} order#%{id} executed at %{price} %{quote_unit} for %{volume} %{base_unit}。"
   back: Back
@@ -1556,7 +1522,7 @@ en:
     signup: Sign Up
     login_via_weibo: Login via Weibo
     funds: Funds
-    getstart: Get Start
+    getstart: Get Started
     assets: Solvency
     history: History
     order_history: Order History
@@ -1731,9 +1697,9 @@ en:
     application:
       close: Close
     meta:
-      page_title: Peatio - The Opensource Cryptocurrency Exchange
-      page_description: Peatio - The Opensource Cryptocurrency Exchange
-      page_keywords: Peatio,Opensource,Exchange,Cryptocurrency
+      page_title: Nubot - The Open-source Cryptocurrency Stabilizer
+      page_description: Nubot - The Open-source Cryptocurrency Stabilizer
+      page_keywords: Nubot,Opensource,Exchange,Cryptocurrency
   members:
     edit:
       name: Please fill out the application.
@@ -1817,7 +1783,7 @@ en:
       edit:
         submit: Disable
         warning: 'Tip: If you have lost your Two-Factor Authentication by some reason
-          and can''t login your Peatio account, please contact our online customer
+          and can''t login your Nubot account, please contact our online customer
           service.'
       show:
         step-1: Step 1

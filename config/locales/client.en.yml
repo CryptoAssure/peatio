@@ -22,11 +22,11 @@ en:
         add: Add
         manage: Manage
         amount: Deposit Amount
-        min_amount: At least 10 yuan
+        min_amount: $10 minimum
         to_account: Account
         to_name: Name
         to_bank_name: Bank Name
-        opening_bank_name: Account where created
+        opening_bank_name: Location
         remark: 'Referral Code (Transfer identification code)'
 
       deposit_btc:
@@ -74,7 +74,7 @@ en:
         withdraw_amount: Withdraw Amount
         manage_withdraw: Manage Withdraw
         fee_explain: About Fee
-        min: At least
+        min: Minimum
         withdraw_all: Withdraw all
 
       withdraw_btc:
@@ -86,7 +86,7 @@ en:
         balance: Balance
         amount: Amount
         manage_withdraw: Manage Address
-        min: At least
+        min: Minimum
         withdraw_all: Withdraw all
         fee_explain: About Fee
 

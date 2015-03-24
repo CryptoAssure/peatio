@@ -16,22 +16,22 @@
       <td rowspan="3" class="v-col">{{ "funds.deposit_usd.from" | t }}</td>
       <td><label class="optional control-label">{{ "funds.deposit_usd.deposit_name" | t }}</label><p class="form-control-static">{{name}}</p></td>
       <td rowspan="3" class="v-col">{{ "funds.deposit_usd.to" | t }}</td>
-      <td><label class="optional control-label">{{ "funds.deposit_usd.to_name" | t }}</label><p class="form-control-static">邱亮</p></td>
+      <td><label class="optional control-label">{{ "funds.deposit_usd.to_name" | t }}</label><p class="form-control-static">Nu</p></td>
     </tr>
     <tr>
       <td>
-        <label class="select required control-label" for="deposit_fund_source">{{"funds.deposit_usd.deposit_account" | t}} (<a href="/usd_fund_sources/new">{{"funds.deposit_usd.add" | t}}</a>|<a href="/usd_fund_sources">{{ "funds.deposit_usd.manage" | t }}</a>)</label>
+        <label class="select required control-label" for="deposit_fund_source">{{"funds.deposit_usd.deposit_account" | t}} (&nbsp;<a href="/usd_fund_sources/new">{{"funds.deposit_usd.add" | t}}</a>&nbsp;|&nbsp;<a href="/usd_fund_sources">{{ "funds.deposit_usd.manage" | t }}</a>&nbsp;)</label>
         <select id="fund_source" class="select required form-control" name="fund_source" ng-model="depositsCtrl.deposit.fund_source" required>
           <option value="{{fs.id}}" ng-repeat="fs in fsources">{{fs.label}}</option>
         </select>
       </td>
-      <td><label class="optional control-label">{{"funds.deposit_usd.to_account" | t}}</label><p class="form-control-static">6214 8501 0176 3297</p></td>
+      <td><label class="optional control-label">{{"funds.deposit_usd.to_account" | t}}</label><p class="form-control-static">0000-0000-0000-0001</p></td>
     </tr>
     <tr class="last-row">
       <td><label class="optional control-label">{{ "funds.deposit_usd.amount" | t}}</label><input class="form-control" id="deposit_sum" name="deposit[sum]" placeholder="{{'funds.deposit_usd.min_amount' | t}}" type="number" min="100" ng-model="depositsCtrl.deposit.amount" required></td>
       <td class="row">
-        <span class="col-md-12"><label class="optional control-label">{{ "funds.deposit_usd.to_bank_name" | t }}</label><p class="form-control-static">招商银行</p></span>
-        <span class="col-md-12"><label class="optional control-label">{{ "funds.deposit_usd.opening_bank_name" | t }}</label><p class="form-control-static">北京双榆树支行</p></span>
+        <span class="col-md-12"><label class="optional control-label">{{ "funds.deposit_usd.to_bank_name" | t }}</label><p class="form-control-static">Internal</p></span>
+        <span class="col-md-12"><label class="optional control-label">{{ "funds.deposit_usd.opening_bank_name" | t }}</label><p class="form-control-static"></p></span>
       </td>
     </tr>
   </table>
@@ -67,4 +67,3 @@
   </tr>
   <tr ng-show="dhCtrl.canCancel(deposit.aasm_state)"><td colspan="6"><span class="help-block text-center">{{ "funds.deposit_history.no_data" | t }}</span></td></tr>
 </table>
-

@@ -32,7 +32,7 @@ module Private
       @currency ||= Currency.find_by_code(params[:currency])
 
       if not @currency.coin?
-        @dollars ||= Dollar.with_currency(params[:currency])
+        @currency ||= Currency.with_currency(params[:currency])
       end
     end
 
