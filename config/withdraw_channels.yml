@@ -16,3 +16,10 @@
   proportion: true
   inuse: true
   type: WithdrawChannelDollar
+- id: 600
+  key: nubit
+  currency: nbt
+  fixed: 4
+  fee: 0.02
+  inuse: true
+  type: WithdrawChannelNubit

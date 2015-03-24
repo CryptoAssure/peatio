@@ -1,0 +1,11 @@
+- unless @one_nubits.empty?
+  .panel.panel-primary
+    .panel-heading: span = t('.one')
+    = render partial: 'table', locals: {nubits: @one_nubits}
+- unless @all_nubits.empty?
+  .panel.panel-success
+    .panel-heading: span = t('.all')
+    = render partial: 'table', locals: {nubits: @all_nubits}
+
+- if @all_nubits.empty? and @one_nubits.empty?
+  h3.text-info.text-center = t('.empty')

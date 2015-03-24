@@ -277,11 +277,17 @@ en:
     currency:
       btc: BTC
       usd: usd
+      nbt: nbt
   currency:
     satoshi:
       key: BTC
       code: BTC
       name: Bitcoin
+      format: '0,0.0000'
+    nubit:
+      key: NBT
+      code: NBT
+      name: NuBit
       format: '0,0.0000'
     dollar:
       key: usd
@@ -433,6 +439,13 @@ en:
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
+    nubit:
+      key: Block Chain
+      title: NuBit Deposits
+      intro: Deposit nubit from your own wallet address to Nubot account
+      latency: 1 confirmation
+      transfer: Manual
+      go: Deposit
   deposits/dollar:
     aasm_state:
       submitting: Submitting
@@ -447,6 +460,9 @@ en:
       satoshis:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
+      nubits:
+        gen_address:
+          require_transaction: it can't generate new address if it hasn't been used.      
       dollars:
         destroy:
           notice: Revocation request is successful.
@@ -589,6 +605,21 @@ en:
         create:
           notice: Withdrawal request successfully submitted. Use the info below to
             complete the dollar transfer.
+      nubits:
+        destroy:
+          notice: Withdraw been canceled, frozen balance has returned to your account
+        update:
+          notice: Withdraw request is submit successful, we will process it as soon
+            as possible
+          alert_two_factor: Two-Factor Authentication error
+        new:
+          submit: Submit
+          allin: All-In
+          fund_source_label: Label
+          manage_fund_source: Manage Fund Source
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the dollar transfer.
     tickets:
       index:
         new_ticket: New Ticket
@@ -659,12 +690,15 @@ en:
       index:
         liability-proof: Proof of Liabilities
         btc-assets: BTC Assets
-        usd-assets: usd Assets
+        usd-assets: USD Assets
+        nbt-assets: NBT Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
-        verify-usd: Verify My usd Assets
+        verify-usd: Verify My USD Assets
+        verify-nbt: Verify My NBT Assets
         btc-assets-total: 'Total BTC assets of exchange: '
-        usd-assets-total: 'Total usd assets of exchange: '
+        usd-assets-total: 'Total USD assets of exchange: '
+        nbt-assets-total: 'Total NBT assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both
@@ -686,10 +720,15 @@ en:
         intro: All of exchange's BTC assets are listed here.
         total: Total BTC Assets
         address: Address
+      nbt_assets:
+        title: NBT Assets
+        intro: All of exchange's NBT assets are listed here.
+        total: Total NBT Assets
+        address: Address
       usd_assets:
-        title: usd Assets
-        intro: All of exchange's usd assets are listed here.
-        total: Total usd Assets
+        title: USD Assets
+        intro: All of exchange's USD assets are listed here.
+        total: Total USD Assets
         description: " <p>For supervision, you can inquiry the balance of our deposit
           account:</p> <p>Dollar: %{dollar}</p> <p>Account： %{address}</p> <p>Inquiry
           Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
@@ -700,6 +739,7 @@ en:
         account_history: Account History
         usd_format: '0.00'
         btc_format: '0.00000000'
+        nbt_format: '0.0000'
         reason:
           usd:
             strike_add: Plus
@@ -708,6 +748,12 @@ en:
             withdraw: Withdraw
             fix: Fix
           btc:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          nbt:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -754,8 +800,9 @@ en:
       market_list:
         all: All Markets
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
-        usd_html: "<i class='fa fa-check'></i><span>usd Markets</span>"
+        usd_html: "<i class='fa fa-check'></i><span>USD Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
+        nbt_html: "<i class='fa fa-check'></i><span>NBT Markets</span>"
         price: Price
         change: "24h %"
       range_switch:
@@ -1092,6 +1139,8 @@ en:
             service
         satoshi:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
+        nubit:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
     creating: Creating...
     updating: Updating...
     buttons:
@@ -1141,6 +1190,13 @@ en:
           fund_extra: Label
           account_balance: Account Balance
           member_name: Account
+        nubit:
+          fee: Fee
+          sum: Amount
+          fund_uid: NuBit Address
+          fund_extra: Label
+          account_balance: Account Balance
+          member_name: Account
   admin:
     deposits:
       dollars:
@@ -1157,6 +1213,12 @@ en:
         update:
           blank_txid: TxID can't be blank
       satoshis:
+        update:
+          notice: The deposit was successful.
+        index:
+          accept: Accept
+          accept_confirm: Confirm deposit?
+      nubits:
         update:
           notice: The deposit was successful.
         index:
@@ -1247,7 +1309,25 @@ en:
           succeed_confirm: Process withdrawal?
           reject_confirm: Reject withdrawal?
           withdraw: Withdrawals
+      nubits:
+        index:
+          one: Pending withdrawals
+          all: Last 24 hours
+          empty: No data
+        show:
+          process: Accepted
+          succeed: Withdraw
+          reject: Reject
+          succeed_confirm: Process withdrawal?
+          reject_confirm: Reject withdrawal?
+          withdraw: Withdrawals
   deposits/satoshi:
+    aasm_state:
+      submitted: Submitted
+      accepted: Accepted
+      checked: Checked
+      warning: Warning
+  deposits/nubit:
     aasm_state:
       submitted: Submitted
       accepted: Accepted
@@ -1318,6 +1398,14 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
+    nubit:
+      amount: Amount
+      txid: TxId
+      created_at: Created At
+      confirmations: Confirmations
+      member_name: Member
+      state_and_actions: State/Actions
+      currency_obj_key_text: Currency
     dollar:
       sn: SN
       amount: Amount
@@ -1377,6 +1465,7 @@ en:
       category:
         satoshi: Bitcoin
         dollar: Dollar
+        nubit: NuBit
     id_document:
       id_document_type:
         id_card: ID Card
@@ -1859,6 +1948,18 @@ en:
       canceled: Canceld
       failed: Failed
   withdraws/satoshi:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Cancelled
+      failed: Failed
+  withdraws/nubit:
     aasm_state:
       submitting: Submitting
       submitted: Submitted

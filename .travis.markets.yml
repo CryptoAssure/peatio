@@ -4,3 +4,9 @@
   quote_unit: usd
   bid: {fee: 0, currency: usd, fixed: 2}
   ask: {fee: 0, currency: btc, fixed: 4}
+  - id: btcusd
+  code: 4
+  base_unit: nbt
+  quote_unit: usd
+  bid: {fee: 0, currency: usd, fixed: 2}
+  ask: {fee: 0, currency: nbt, fixed: 4}

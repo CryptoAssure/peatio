@@ -6,10 +6,12 @@ module Private
       @usd_assets  = Currency.assets('usd')
       @btc_proof   = Proof.current :btc
       @usd_proof   = Proof.current :usd
+      @nbt_proof   = Proof.current :nbt
 
       if current_user
         @btc_account = current_user.accounts.with_currency(:btc).first
         @usd_account = current_user.accounts.with_currency(:usd).first
+        @nbt_account = current_user.accounts.with_currency(:nbt).first
       end
     end
 
