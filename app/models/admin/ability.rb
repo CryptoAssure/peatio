@@ -18,10 +18,12 @@ module Admin
       can :menu, Deposit
       can :manage, ::Deposits::Dollar
       can :manage, ::Deposits::Satoshi
+      can :manage, ::Deposits::Nubit
 
       can :menu, Withdraw
       can :manage, ::Withdraws::Dollar
       can :manage, ::Withdraws::Satoshi
+      can :manage, ::Withdraws::Nubit
     end
   end
 end
