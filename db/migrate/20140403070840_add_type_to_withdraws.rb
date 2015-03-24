@@ -3,7 +3,7 @@ class AddTypeToWithdraws < ActiveRecord::Migration
     add_column :withdraws, :type, :string
 
     Withdraw.all.each do |withdraw|
-      type = withdraw.currency == 'btc' ? 'Withdraws::Satoshi' : 'Withdraws::Bank'
+      type = withdraw.currency == 'btc' ? 'Withdraws::Satoshi' : 'Withdraws::Dollar'
       withdraw.update_column :type, type
     end
   end

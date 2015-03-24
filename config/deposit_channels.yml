@@ -5,8 +5,8 @@
   min_confirm: 1
   max_confirm: 3
 - id: 400
-  key: bank
-  currency: cny
+  key: dollar
+  currency: usd
   sort_order: 2
   bank_accounts:
     -

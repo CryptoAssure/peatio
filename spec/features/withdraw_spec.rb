@@ -14,13 +14,13 @@ describe 'withdraw' do
 
     btc_account = member.get_account(:btc)
     btc_account.update_attributes balance: 1000
-    cny_account = member.get_account(:cny)
-    #cny_account.update_attributes balance: 0
+    usd_account = member.get_account(:usd)
+    #usd_account.update_attributes balance: 0
 
     @label = 'common address'
-    @bank = 'bc'
+    @dollar = 'bc'
     @btc_addr = create :btc_fund_source, extra: @label, uid: '1btcaddress', member: member
-    @cny_addr = create :cny_fund_source, extra: @bank, uid: '1234566890', member: member
+    @usd_addr = create :usd_fund_source, extra: @dollar, uid: '1234566890', member: member
   end
 
   it 'allows user to add a BTC withdraw address, withdraw BTC' do
@@ -54,18 +54,18 @@ describe 'withdraw' do
 
     login identity
 
-    visit new_withdraws_bank_path
+    visit new_withdraws_dollar_path
 
-    submit_bank_withdraw_request 800
-    expect(current_path).to eq(withdraws_banks_path)
-    expect(page).to have_text(I18n.t('activerecord.errors.models.withdraws/bank.attributes.sum.poor'))
+    submit_dollar_withdraw_request 800
+    expect(current_path).to eq(withdraws_dollars_path)
+    expect(page).to have_text(I18n.t('activerecord.errors.models.withdraws/dollar.attributes.sum.poor'))
   end
 
   private
 
-  def submit_bank_withdraw_request amount
-    select 'Bank of China', from: 'withdraw_fund_extra'
-    select @bank, from: 'withdraw_fund_uid'
+  def submit_dollar_withdraw_request amount
+    select 'Dollar of China', from: 'withdraw_fund_extra'
+    select @dollar, from: 'withdraw_fund_uid'
     fill_in 'withdraw_sum', with: amount
     click_on I18n.t 'actions.submit'
   end

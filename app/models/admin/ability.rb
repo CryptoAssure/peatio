@@ -16,11 +16,11 @@ module Admin
       can :manage, TwoFactor
 
       can :menu, Deposit
-      can :manage, ::Deposits::Bank
+      can :manage, ::Deposits::Dollar
       can :manage, ::Deposits::Satoshi
 
       can :menu, Withdraw
-      can :manage, ::Withdraws::Bank
+      can :manage, ::Withdraws::Dollar
       can :manage, ::Withdraws::Satoshi
     end
   end

@@ -6,10 +6,10 @@ en:
       deposit: Deposit
       withdraw: Withdraw
       currency_name:
-        cny: CNY
+        usd: USD
         btc: BTC
-      deposit_cny:
-        title: Chinese Yuan Deposit
+      deposit_usd:
+        title: US Dollar Deposit
         desc: "To deposit via Bank transfer, please follow these steps:"
         desc_item_1: "1. Submit the form to get the identification code."
         desc_item_2: "2. Transfer the money to exchange's bank account. Please make sure your referral code was written on the form you fill in."
@@ -63,8 +63,8 @@ en:
         warning: Warning
         suspect: Suspect
 
-      withdraw_cny:
-        title: Chinese Yuan Withdraw
+      withdraw_usd:
+        title: US Dollar Withdraw
         intro: Select the bank to cash withdrawal amount and enter the account number and complete submission.
         intro_2: Your bank account and name must be consistent with the real-name authentication name.
         attention: "Working Hours: 9:00 - 18:00"
@@ -132,6 +132,6 @@ en:
     markets:
       market_list:
         all: All Market
-        cny: CNY Market
+        usd: USD Market
         btc: BTC Market
 

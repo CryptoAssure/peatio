@@ -1,6 +1,6 @@
 module Private
   module Deposits
-    class BanksController < ::Private::Deposits::BaseController
+    class DollarsController < ::Private::Deposits::BaseController
       include ::Deposits::CtrlBankable
     end
   end

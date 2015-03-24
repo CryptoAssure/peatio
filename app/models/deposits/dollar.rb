@@ -1,5 +1,5 @@
 module Deposits
-  class Bank < ::Deposit
+  class Dollar < ::Deposit
     include ::AasmAbsolutely
     include ::Deposits::Bankable
     include ::FundSourceable

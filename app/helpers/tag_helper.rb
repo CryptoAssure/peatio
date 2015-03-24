@@ -15,6 +15,6 @@ module TagHelper
   end
 
   def bank_code_to_name(code)
-    I18n.t("banks.#{code}")
+    I18n.t("dollars.#{code}")
   end
 end

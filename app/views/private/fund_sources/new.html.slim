@@ -1,9 +1,9 @@
 = simple_form_for @fund_source, url: [@currency.code, :fund_sources] do |f|
-  - if @banks
+  - if @dollars
     = f.input :extra, label: t('.selector'),
-      collection: @banks,
+      collection: @dollars,
       value_method: :code,
-      label_method: -> (i) { t("banks.#{i.code}") },
+      label_method: -> (i) { t("dollars.#{i.code}") },
       prompt: t('actions.select'),
       hint: t('.extra_hint')
     = f.input :uid, label: t('.uid')

@@ -1,12 +1,12 @@
 - id: 1
-  key: renminbi
-  code: cny
+  key: dollar
+  code: usd
   coin: false
   assets:
     balance: 92343242.56
     accounts:
       -
-        bank: '招商银行'
+        bank: 'First Bank of Crypto'
         address: '6225 0885 6022 3501'
         password: '111111'
         tel: '95555'

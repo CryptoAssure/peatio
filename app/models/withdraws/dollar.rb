@@ -1,5 +1,5 @@
 module Withdraws
-  class Bank < ::Withdraw
+  class Dollar < ::Withdraw
     include ::AasmAbsolutely
     include ::Withdraws::Bankable
     include ::FundSourceable

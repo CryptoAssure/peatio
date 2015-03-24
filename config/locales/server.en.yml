@@ -18,8 +18,8 @@ en:
       statistic/withdraws_grid: Withdraws Stat
       admin/deposits_grid: Deposits
       admin/withdraws_grid: Withdraws
-      deposits/bank: Deposit Bank
-      withdraws/bank: Withdraw Bank
+      deposits/dollar: Deposit Dollar
+      withdraws/dollar: Withdraw Dollar
       withdraws/satoshi: Withdraw
     attributes:
       api_token:
@@ -142,24 +142,24 @@ en:
         country: Country
         phone_number: Phone Number
         otp: Verify Code
-      withdraws/bank:
+      withdraws/dollar:
         id: ID
         member_name: Member
         currency_obj_key_text: Currency
         state_and_actions: State/Action
-        fund_source: Bank
-        fund_extra: Bank
-        fund_extra_text: Bank
-        fund_uid: Bank Account
+        fund_source: Dollar
+        fund_extra: Dollar
+        fund_extra_text: Dollar
+        fund_uid: Dollar Account
         sum: Amount
         fee: Fee
         amount: Amount
         remark: Remark
         created_at: Created At
-      deposits/bank:
+      deposits/dollar:
         created_at: Created At
         holder: Holder
-        fund_extra: Sender Bank
+        fund_extra: Sender Dollar
         fund_uid: Sender Account
         member_sn: Member SN
         member_name: Sender Name
@@ -181,7 +181,7 @@ en:
         state_and_actions: State/Action
         fund_extra_text: Withdraw Label
         fund_extrat: Withdraw Label
-        fund_source: Bank
+        fund_source: Dollar
         fund_uid: Account
         created_at: Created At
         sum: Amount
@@ -242,7 +242,7 @@ en:
               match: invalid
             amount:
               poor: insufficient
-              bank_min: Less 5000.00
+              dollar_min: Less 5000.00
         withdraws/satoshi:
           attributes:
             fund_uid:
@@ -271,28 +271,28 @@ en:
           price: limit price %{l} ~ %{h}
           sum: limit sum price %{l} ~ %{h}
           precision: minimum precision %{p}
-  banks:
-    icbc: Industryand Commercial Bank of China
-    cbc: Construction Bank of China
-    bc: Bank of China
-    bcm: Bank of Communications
-    abc: Agriculture Bank of China
-    cmb: China Merchants Bank Ltd
-    cmbc: China Minsheng Banking Co., Ltd
-    cncb: China CITIC Bank
-    hxb: Hua Xia Bank Co., Ltd.
-    cib: Industrial Bank Co., Ltd
-    spdb: Shanghai Pudong Development Bank
-    bob: Bank of Beijing
-    ceb: China Everbright Bank CO.LTD
-    sdb: Shenzhen Development Bank
-    pab: Ping An Bank Co., Ltd.
-    gdb: Guangdong Development Bank
-    psbc: Postal Savings Bank of China
+  dollars:
+    icbc: Industryand Commercial Dollar of China
+    cbc: Construction Dollar of China
+    bc: Dollar of China
+    bcm: Dollar of Communications
+    abc: Agriculture Dollar of China
+    cmb: China Merchants Dollar Ltd
+    cmbc: China Minsheng Dollaring Co., Ltd
+    cncb: China CITIC Dollar
+    hxb: Hua Xia Dollar Co., Ltd.
+    cib: Industrial Dollar Co., Ltd
+    spdb: Shanghai Pudong Development Dollar
+    bob: Dollar of Beijing
+    ceb: China Everbright Dollar CO.LTD
+    sdb: Shenzhen Development Dollar
+    pab: Ping An Dollar Co., Ltd.
+    gdb: Guangdong Development Dollar
+    psbc: Postal Savings Dollar of China
   market:
     currency:
       btc: BTC
-      cny: CNY
+      usd: usd
       doge: DOGE
       pts: PTS
       ltc: LTC
@@ -308,8 +308,8 @@ en:
       name: BitsharesX
       format: '0,0.0000'
     renminbi:
-      key: CNY
-      code: CNY
+      key: usd
+      code: usd
       name: Chinese Yuan
       format: '0,0.00'
     dogecoin:
@@ -344,12 +344,12 @@ en:
         currency_text: Currency
         aasm_state_text: State
         member_name: Member
-    bank_deposits_grid:
+    dollar_deposits_grid:
       columns:
         sn: SN
         created_at: At
         channel_key_text: Category
-        fund_extra_text: Bank
+        fund_extra_text: Dollar
         fund_uid: Account
         amount: Amount
         fee: Fee
@@ -453,10 +453,10 @@ en:
         state: State
         created_at: Created at
   deposit_channel:
-    bank:
-      key: Bank transfer
-      title: Bank transfer
-      intro: Bank transfer deposits, recommend for large recharge
+    dollar:
+      key: Dollar transfer
+      title: Dollar transfer
+      intro: Dollar transfer deposits, recommend for large recharge
       latency: 10 minutes
       transfer: Manual
       go: Deposit
@@ -467,7 +467,7 @@ en:
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
-  deposits/bank:
+  deposits/dollar:
     aasm_state:
       submitting: Submitting
       cancelled: Cancelled
@@ -481,32 +481,32 @@ en:
       satoshis:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.
-      banks:
+      dollars:
         destroy:
           notice: Revocation request is successful.
         create:
-          notice: Recharge request successfully submitted. Use the info below to complete the bank transfer.
+          notice: Recharge request successfully submitted. Use the info below to complete the dollar transfer.
           submit: Submit
         new:
           fund_source: Select Fund Source
           manage_fund_source: Manage Fund Source
           submit: Submit
         edit:
-          bank: Receive Bank Name
-          branch: Receive Bank Branch
+          dollar: Receive Dollar Name
+          branch: Receive Dollar Branch
           hodler: Receive holder
           account: Receive Account
     fund_sources:
       index:
         manage_coin_address: Manage %{name} Address
-        manage_bank_account: Manage Bank Account
+        manage_dollar_account: Manage Dollar Account
         guide_intro_coin: You can creat one new %{name} address, and it can be available
           for your withdrawal later.
-        guide_intro_bank: You can creat one new fund source, and it can be available
+        guide_intro_dollar: You can creat one new fund source, and it can be available
           for your deposit or withdrawal later.
         new: New
         currency: Currency
-        bank: Bank
+        dollar: Dollar
         label: Label
         account: Account
         address: Address
@@ -514,12 +514,12 @@ en:
         delete: Delete
         are_you_sure: Are you sure?
       new:
-        selector: Select Bank
+        selector: Select Dollar
         uid: Account Number
         label: Label
         label_placeholder: Fill any content
         address: Address
-        extra_hint: If your bank is no longer in the list, please contact customer service
+        extra_hint: If your dollar is no longer in the list, please contact customer service
     history:
       transaction:
         Deposit: Deposit
@@ -592,13 +592,13 @@ en:
         withdraw_history: Withdrawal History
       create:
         two_factors_error: Two factor authentication failed.
-      banks:
+      dollars:
         update:
-          notice: Bank Transfer withdrawal application has been submitted, we will
+          notice: Dollar Transfer withdrawal application has been submitted, we will
             process it as soon as possible
           alert_two_factor: Two-Factor Authentication error
         destroy:
-          notice: Bank Transfer withdraw has been cancelled, frozen amount has been
+          notice: Dollar Transfer withdraw has been cancelled, frozen amount has been
             returned to your account.
         new:
           fund_source: Select Fund Source
@@ -607,7 +607,7 @@ en:
           allin: All-In
         create:
           notice: Withdrawal request successfully submitted. Use the info below to
-            complete the bank transfer.
+            complete the dollar transfer.
       satoshis:
         destroy:
           notice: Withdraw been canceled, frozen balance has returned to your account
@@ -622,7 +622,7 @@ en:
           manage_fund_source: Manage Fund Source
         create:
           notice: Withdrawal request successfully submitted. Use the info below to
-            complete the bank transfer.
+            complete the dollar transfer.
     tickets:
       index:
         new_ticket: New Ticket
@@ -693,12 +693,12 @@ en:
       index:
         liability-proof: Proof of Liabilities
         btc-assets: BTC Assets
-        cny-assets: CNY Assets
+        usd-assets: usd Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
-        verify-cny: Verify My CNY Assets
+        verify-usd: Verify My usd Assets
         btc-assets-total: 'Total BTC assets of exchange: '
-        cny-assets-total: 'Total CNY assets of exchange: '
+        usd-assets-total: 'Total usd assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both
@@ -720,22 +720,22 @@ en:
         intro: All of exchange's BTC assets are listed here.
         total: Total BTC Assets
         address: Address
-      cny_assets:
-        title: CNY Assets
-        intro: All of exchange's CNY assets are listed here.
-        total: Total CNY Assets
+      usd_assets:
+        title: usd Assets
+        intro: All of exchange's usd assets are listed here.
+        total: Total usd Assets
         description: " <p>For supervision, you can inquiry the balance of our deposit
-          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          account:</p> <p>Dollar: %{dollar}</p> <p>Account： %{address}</p> <p>Inquiry
           Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
       partial_tree:
         success: 'Success! Verification data generated at: %{timestamp}'
     funds:
       show:
         account_history: Account History
-        cny_format: '0.00'
+        usd_format: '0.00'
         btc_format: '0.00000000'
         reason:
-          cny:
+          usd:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -788,7 +788,7 @@ en:
       market_list:
         all: All Markets
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
-        cny_html: "<i class='fa fa-check'></i><span>CNY Markets</span>"
+        usd_html: "<i class='fa fa-check'></i><span>usd Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
         price: Price
         change: "24h %"
@@ -979,7 +979,7 @@ en:
         balance: Balance
         available: Available
         title: "%{icon} %{c} Account"
-        cny_format: '0.00'
+        usd_format: '0.00'
         btc_format: '0.00000000'
         total: Total
   guides:
@@ -1064,7 +1064,7 @@ en:
   simple_form:
     placeholders:
       deposit:
-        bank:
+        dollar:
           amount: Minimum amount 100
       session:
         email: E-mail Address
@@ -1091,18 +1091,18 @@ en:
         email: For example：xiaobai@example.com
         password: Please set your login password!
       withdraw:
-        bank:
+        dollar:
           sum: Minimum amount 100
         satoshi:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
     hints:
       deposit:
-        bank:
+        dollar:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
-          member_name: "<span class='text-danger'>Recharge bank account name must
+          member_name: "<span class='text-danger'>Recharge dollar account name must
             match the name with your real name authentication</span>"
-          sn: "<span class='text-danger'>Please copy the SN in your bank transfer's
+          sn: "<span class='text-danger'>Please copy the SN in your dollar transfer's
             message, otherwise we can not process your order quickly.</span>"
       two_factor:
         otp_secret: We recommend that you back up QR code image or ciphertext to avoid
@@ -1118,11 +1118,11 @@ en:
       id_document:
         name: Please fill in the name which is consistent with your Credentials.
       withdraw:
-        bank:
-          member_name: "<span class='text-danger'>Withdraw bank account name must
+        dollar:
+          member_name: "<span class='text-danger'>Withdraw dollar account name must
             match your name used for real-name authentication</span>"
           sum: "<a target='_balance' href='#'>Fee structure</a>"
-          fund_extra: If your bank is no longer in the list, please contact customer
+          fund_extra: If your dollar is no longer in the list, please contact customer
             service
         satoshi:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
@@ -1163,8 +1163,8 @@ en:
       ticket:
         content: More detail
       withdraw:
-        bank:
-          fund_extra: Bank
+        dollar:
+          fund_extra: Dollar
           sum: Amount
           account_balance: Account Balance
           member_name: Account Holder Name
@@ -1177,7 +1177,7 @@ en:
           member_name: Account
   admin:
     deposits:
-      banks:
+      dollars:
         index:
           oneday: Requests in the last 24 hours
           available: All Pending Requests
@@ -1256,7 +1256,7 @@ en:
           amount: Total Amount
           fee: Fee
     withdraws:
-      banks:
+      dollars:
         index:
           one: Pending withdrawal Orders
           all: Twenty-four hours Orders
@@ -1352,7 +1352,7 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
-    bank:
+    dollar:
       sn: SN
       amount: Amount
       created_at: At
@@ -1381,7 +1381,7 @@ en:
       wait: Wait
       cancel: Cancel
     currency:
-      cny: CNY
+      usd: usd
       btc: BTC
     order:
       state:
@@ -1410,14 +1410,14 @@ en:
     fund_source:
       category:
         satoshi: Bitcoin
-        bank: Bank
+        dollar: Dollar
     id_document:
       id_document_type:
         id_card: ID Card
         passport: Passport
         driver_license: Driver's License
       id_bill_type:
-        bank_statement: Bank Statement
+        dollar_statement: Dollar Statement
         tax_bill: Tax Bill
   views:
     pagination:
@@ -1864,10 +1864,10 @@ en:
         alert:
           phone_number_error: phone number error
   withdraw_channel:
-    bank:
-      key: Bank Transfer
-      title: Bank Transfer
-      intro: Bank transfer deposits, Recommend for large recharge
+    dollar:
+      key: Dollar Transfer
+      title: Dollar Transfer
+      intro: Dollar transfer deposits, Recommend for large recharge
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
@@ -1880,7 +1880,7 @@ en:
       go: Withdraw
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
-  withdraws/bank:
+  withdraws/dollar:
     aasm_state:
       submitting: Submitting
       submitted: Submitted

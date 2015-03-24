@@ -12,10 +12,10 @@ app.directive 'accounts', ->
       $scope.accounts = Account.all()
 
       # Might have a better way
-      # #/deposits/cny
+      # #/deposits/usd
       @selectedCurrency = window.location.hash.split('/')[2] || Account.first().currency
       @currentAction = window.location.hash.split('/')[1] || 'deposits'
-      $scope.currecny = @selectedCurrency
+      $scope.curreusd = @selectedCurrency
 
       @isSelected = (currency) ->
         @selectedCurrency == currency

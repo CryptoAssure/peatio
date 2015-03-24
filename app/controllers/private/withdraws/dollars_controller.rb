@@ -1,5 +1,5 @@
 module Private::Withdraws
-  class BanksController < ::Private::Withdraws::BaseController
+  class DollarsController < ::Private::Withdraws::BaseController
     include ::Withdraws::CtrlBankable
   end
 end
