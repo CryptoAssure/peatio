@@ -15,7 +15,7 @@ app.directive 'accounts', ->
       # #/deposits/usd
       @selectedCurrency = window.location.hash.split('/')[2] || Account.first().currency
       @currentAction = window.location.hash.split('/')[1] || 'deposits'
-      $scope.curreusd = @selectedCurrency
+      $scope.currency = @selectedCurrency
 
       @isSelected = (currency) ->
         @selectedCurrency == currency
