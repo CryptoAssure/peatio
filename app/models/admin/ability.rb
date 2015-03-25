@@ -25,7 +25,7 @@ module Admin
       can :manage, ::Withdraws::Dollar
       can :manage, ::Withdraws::Satoshi
       can :manage, ::Withdraws::Nubit
-      can :manage, ::Withdraws::Eur
+      can :manage, ::Withdraws::Euro
     end
   end
 end
