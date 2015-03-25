@@ -32,7 +32,7 @@ module Private
       @currency ||= Currency.find_by_code(params[:currency])
 
       if not @currency.coin?
-        @currency ||= Currency.with_currency(params[:currency])
+        @banks ||= Bank.with_currency(params[:currency])
       end
     end
 

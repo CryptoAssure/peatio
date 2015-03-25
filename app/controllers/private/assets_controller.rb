@@ -4,14 +4,17 @@ module Private
 
     def index
       @usd_assets  = Currency.assets('usd')
+      @eur_assets  = Currency.assets('eur')
       @btc_proof   = Proof.current :btc
       @usd_proof   = Proof.current :usd
       @nbt_proof   = Proof.current :nbt
+      @eur_proof   = Proof.current :eur
 
       if current_user
         @btc_account = current_user.accounts.with_currency(:btc).first
         @usd_account = current_user.accounts.with_currency(:usd).first
         @nbt_account = current_user.accounts.with_currency(:nbt).first
+        @eur_account = current_user.accounts.with_currency(:eur).first
       end
     end
 

@@ -619,7 +619,8 @@ header {
       &.usd { tr.quote-usd { display: block; } }
       &.btc { tr.quote-btc { display: block; } }
       &.nbt { tr.quote-nbt { display: block; } }
-        .name { font-size: 13px; padding-top: 2px; }
+      &.eur { tr.quote-eur { display: block; } }
+      .name { font-size: 13px; padding-top: 2px; }
     }
   }
 }

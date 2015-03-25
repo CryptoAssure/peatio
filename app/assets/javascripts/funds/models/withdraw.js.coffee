@@ -19,5 +19,6 @@ class Withdraw extends PeatioModel.Model
       when 'usd' then 'dollars'
       when 'btc' then 'satoshis'
       when 'nbt' then 'nubits'
+      when 'eur' then 'eur'
 
 window.Withdraw = Withdraw

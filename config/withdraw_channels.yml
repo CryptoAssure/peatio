@@ -11,7 +11,7 @@
   fixed: 4
   fee_max: 0
   min: 100
-  max: 50000
+  max: 500000
   fee: 0.003
   proportion: true
   inuse: true
@@ -23,3 +23,14 @@
   fee: 0.02
   inuse: true
   type: WithdrawChannelNubit
+- id: 800
+  key: euro
+  currency: eur
+  fixed: 4
+  fee_max: 0
+  min: 100
+  max: 500000
+  fee: 0.003
+  proportion: true
+  inuse: true
+  type: WithdrawChannelEuro

@@ -19,8 +19,13 @@ en:
       admin/deposits_grid: Deposits
       admin/withdraws_grid: Withdraws
       deposits/dollar: Deposit Dollar
+      deposits/satoshi: Deposit Bitcoin
+      deposits/nubit: Deposit NuBit
+      deposits/euro: Deposit Euro
       withdraws/dollar: Withdraw Dollar
-      withdraws/satoshi: Withdraw
+      withdraws/satoshi: Withdraw Bitcoin
+      withdraws/nubit: Withdraw NuBit
+      withdraws/euro: Withdraw Euro
     attributes:
       api_token:
         access_key: Access Key
@@ -147,10 +152,10 @@ en:
         member_name: Member
         currency_obj_key_text: Currency
         state_and_actions: State/Action
-        fund_source: Dollar
-        fund_extra: Dollar
-        fund_extra_text: Dollar
-        fund_uid: Dollar Account
+        fund_source: Bank
+        fund_extra: Bank
+        fund_extra_text: Bank
+        fund_uid: Bank Account
         sum: Amount
         fee: Fee
         amount: Amount
@@ -159,7 +164,33 @@ en:
       deposits/dollar:
         created_at: Created At
         holder: Holder
-        fund_extra: Sender Dollar
+        fund_extra: Sender Bank
+        fund_uid: Sender Account
+        member_sn: Member SN
+        member_name: Sender Name
+        amount: Amount
+        sn: SN
+        state_and_action: State/Action
+        label: Label
+        fund_source: Fund Source
+      withdraws/euro:
+        id: ID
+        member_name: Member
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_source: Bank
+        fund_extra: Bank
+        fund_extra_text: Bank
+        fund_uid: Bank Account
+        sum: Amount
+        fee: Fee
+        amount: Amount
+        remark: Remark
+        created_at: Created At
+      deposits/euro:
+        created_at: Created At
+        holder: Holder
+        fund_extra: Sender Bank
         fund_uid: Sender Account
         member_sn: Member SN
         member_name: Sender Name
@@ -181,7 +212,27 @@ en:
         state_and_actions: State/Action
         fund_extra_text: Withdraw Label
         fund_extrat: Withdraw Label
-        fund_source: Dollar
+        fund_source: Bank
+        fund_uid: Account
+        created_at: Created At
+        sum: Amount
+        amount: Amount
+        remark: Remark
+        fee: Fee
+      deposits/nubit:
+        created_at: Created At
+        txid: Transaction ID
+        amount: Amount
+        confirmations: Confirmation
+        aasm_state_text: State
+      withdraws/nubit:
+        id: ID
+        member_name: Account
+        currency_obj_key_text: Currency
+        state_and_actions: State/Action
+        fund_extra_text: Withdraw Label
+        fund_extrat: Withdraw Label
+        fund_source: Bank
         fund_uid: Account
         created_at: Created At
         sum: Amount
@@ -235,6 +286,8 @@ en:
             address:
               satoshi_ismine: Used Address
               satoshi_invalid: Invalid Address
+              nubit_ismine: Used Address
+              nubit_invalid: Invalid Address
         withdraw:
           account_balance_is_poor: Account balance is insufficient
           attributes:
@@ -244,6 +297,12 @@ en:
               poor: insufficient
               dollar_min: Less 5000.00
         withdraws/satoshi:
+          attributes:
+            fund_uid:
+              blank: Please enter your withdrawal address
+              invalid: Invalid withdrawals address, please review.
+              ismine: Please use a new address.
+        withdraws/nubit:
           attributes:
             fund_uid:
               blank: Please enter your withdrawal address
@@ -271,13 +330,15 @@ en:
           price: limit price %{l} ~ %{h}
           sum: limit sum price %{l} ~ %{h}
           precision: minimum precision %{p}
-  dollars:
+  banks:
     bofn: Bank of NuBot
+    banco: Banco Crypto Popular
   market:
     currency:
       btc: BTC
-      usd: usd
-      nbt: nbt
+      usd: USD
+      nbt: NBT
+      eur: EUR
   currency:
     satoshi:
       key: BTC
@@ -294,6 +355,11 @@ en:
       code: USD
       name: US Dollar
       format: '0,0.00'
+    euro:
+      key: eur
+      code: EUR
+      name: Euro
+      format: '0 0,00'
   datagrid:
     empty: no data found
     filters:
@@ -425,10 +491,24 @@ en:
         state: State
         created_at: Created at
   deposit_channel:
+    bank:
+      key: Bank transfer
+      title: Bank transfer
+      intro: Bank transfer deposits, recommend for large recharge
+      latency: 10 minutes
+      transfer: Manual
+      go: Deposit
     dollar:
-      key: Dollar transfer
-      title: Dollar transfer
-      intro: Dollar transfer deposits, recommend for large recharge
+      key: Bank transfer
+      title: Bank transfer
+      intro: Bank transfer deposits, recommend for large recharge
+      latency: 10 minutes
+      transfer: Manual
+      go: Deposit
+    euro:
+      key: Bank transfer
+      title: Bank transfer
+      intro: Bank transfer deposits, recommend for large recharge
       latency: 10 minutes
       transfer: Manual
       go: Deposit
@@ -446,7 +526,25 @@ en:
       latency: 1 confirmation
       transfer: Manual
       go: Deposit
+  deposits/bank:
+    aasm_state:
+      submitting: Submitting
+      cancelled: Cancelled
+      submitted: Submitted
+      accepted: Accepted
+      rejected: Rejected
+      checked: Checked
+      warning: Warning
   deposits/dollar:
+    aasm_state:
+      submitting: Submitting
+      cancelled: Cancelled
+      submitted: Submitted
+      accepted: Accepted
+      rejected: Rejected
+      checked: Checked
+      warning: Warning
+  deposits/euro:
     aasm_state:
       submitting: Submitting
       cancelled: Cancelled
@@ -463,20 +561,50 @@ en:
       nubits:
         gen_address:
           require_transaction: it can't generate new address if it hasn't been used.      
-      dollars:
+      banks:
         destroy:
           notice: Revocation request is successful.
         create:
-          notice: Recharge request successfully submitted. Use the info below to complete the dollar transfer.
+          notice: Recharge request successfully submitted. Use the info below to complete the bank transfer.
           submit: Submit
         new:
           fund_source: Select Fund Source
           manage_fund_source: Manage Fund Source
           submit: Submit
         edit:
-          dollar: Receive Dollar Name
-          branch: Receive Dollar Branch
-          hodler: Receive holder
+          bank: Receive Bank Name
+          branch: Receive Bank Branch
+          holder: Receive holder
+          account: Receive Account
+      dollars:
+        destroy:
+          notice: Revocation request is successful.
+        create:
+          notice: Recharge request successfully submitted. Use the info below to complete the bank transfer.
+          submit: Submit
+        new:
+          fund_source: Select Fund Source
+          manage_fund_source: Manage Fund Source
+          submit: Submit
+        edit:
+          bank: Receive Bank Name
+          branch: Receive Bank Branch
+          holder: Receive holder
+          account: Receive Account
+      euros:
+        destroy:
+          notice: Revocation request is successful.
+        create:
+          notice: Recharge request successfully submitted. Use the info below to complete the bank transfer.
+          submit: Submit
+        new:
+          fund_source: Select Fund Source
+          manage_fund_source: Manage Fund Source
+          submit: Submit
+        edit:
+          bank: Receive Bank Name
+          branch: Receive Bank Branch
+          holder: Receive holder
           account: Receive Account
     fund_sources:
       index:
@@ -488,7 +616,7 @@ en:
           for your deposit or withdrawal later.
         new: New
         currency: Currency
-        dollar: Dollar
+        bank: Bank
         label: Label
         account: Account
         address: Account Number
@@ -574,13 +702,45 @@ en:
         withdraw_history: Withdrawal History
       create:
         two_factors_error: Two factor authentication failed.
-      dollars:
+      banks:
         update:
-          notice: Dollar Transfer withdrawal application has been submitted, we will
+          notice: Bank transfer withdrawal application has been submitted, we will
             process it as soon as possible
           alert_two_factor: Two-Factor Authentication error
         destroy:
-          notice: Dollar Transfer withdraw has been cancelled, frozen amount has been
+          notice: Bank transfer withdraw has been cancelled, frozen amount has been
+            returned to your account.
+        new:
+          fund_source: Select Fund Source
+          manage_fund_source: Manage Fund Source
+          submit: Submit
+          allin: All-In
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the dollar transfer.
+      dollars:
+        update:
+          notice: Bank transfer withdrawal application has been submitted, we will
+            process it as soon as possible
+          alert_two_factor: Two-Factor Authentication error
+        destroy:
+          notice: Bank transfer withdraw has been cancelled, frozen amount has been
+            returned to your account.
+        new:
+          fund_source: Select Fund Source
+          manage_fund_source: Manage Fund Source
+          submit: Submit
+          allin: All-In
+        create:
+          notice: Withdrawal request successfully submitted. Use the info below to
+            complete the dollar transfer.
+      euros:
+        update:
+          notice: Bank transfer withdrawal application has been submitted, we will
+            process it as soon as possible
+          alert_two_factor: Two-Factor Authentication error
+        destroy:
+          notice: Bank transfer withdraw has been cancelled, frozen amount has been
             returned to your account.
         new:
           fund_source: Select Fund Source
@@ -692,13 +852,16 @@ en:
         btc-assets: BTC Assets
         usd-assets: USD Assets
         nbt-assets: NBT Assets
+        eur-assets: EUR Assets
       liability_tabs:
         verify-btc: Verify My BTC Assets
         verify-usd: Verify My USD Assets
         verify-nbt: Verify My NBT Assets
+        verify-eur: Verify My EUR Assets
         btc-assets-total: 'Total BTC assets of exchange: '
         usd-assets-total: 'Total USD assets of exchange: '
         nbt-assets-total: 'Total NBT assets of exchange: '
+        eur-assets-total: 'Total EUR assets of exchange: '
       liability_proof:
         title: Proof of Liabilities
         intro: As an exchange, our liabilities refer to the sum of money (in both
@@ -706,7 +869,7 @@ en:
           this page, we present you our liabilities. We also provide you a way to
           verify that your account balance is indeed part of our liabilities.
         how-to-verify: How to verify an exchange is solvent?
-        how-to-verify-uri: https://nubot.com/documents/liability_proof
+        how-to-verify-uri: https://peat.io/documents/liability_proof
       liability_data:
         liability-proof-generating: Proof of Liability generation in process, please
           come back after 30 minutes.
@@ -725,12 +888,19 @@ en:
         intro: All of exchange's NBT assets are listed here.
         total: Total NBT Assets
         address: Address
+      eur_assets:
+        title: EUR Assets
+        intro: All of exchange's EUR assets are listed here.
+        total: Total EUR Assets
+        description: " <p>For supervision, you can inquiry the balance of our deposit
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
+          Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
       usd_assets:
         title: USD Assets
         intro: All of exchange's USD assets are listed here.
         total: Total USD Assets
         description: " <p>For supervision, you can inquiry the balance of our deposit
-          account:</p> <p>Dollar: %{dollar}</p> <p>Account： %{address}</p> <p>Inquiry
+          account:</p> <p>Bank: %{bank}</p> <p>Account： %{address}</p> <p>Inquiry
           Password： %{password}</p> <p>Inquiry Tel.： %{tel}</p>"
       partial_tree:
         success: 'Success! Verification data generated at: %{timestamp}'
@@ -740,8 +910,15 @@ en:
         usd_format: '0.00'
         btc_format: '0.00000000'
         nbt_format: '0.0000'
+        eur_format: '0,00'
         reason:
           usd:
+            strike_add: Plus
+            strike_sub: Sub
+            deposit: Deposit
+            withdraw: Withdraw
+            fix: Fix
+          eur:
             strike_add: Plus
             strike_sub: Sub
             deposit: Deposit
@@ -801,6 +978,7 @@ en:
         all: All Markets
         all_html: "<i class='fa fa-check'></i><span>All Markets</span>"
         usd_html: "<i class='fa fa-check'></i><span>USD Markets</span>"
+        eur_html: "<i class='fa fa-check'></i><span>EUR Markets</span>"
         btc_html: "<i class='fa fa-check'></i><span>BTC Markets</span>"
         nbt_html: "<i class='fa fa-check'></i><span>NBT Markets</span>"
         price: Price
@@ -994,6 +1172,8 @@ en:
         title: "%{icon} %{c} Account"
         usd_format: '0.00'
         btc_format: '0.00000000'
+        nbt_format: '0.0000'
+        eur_format: '0,00'
         total: Total
   guides:
     private:
@@ -1106,16 +1286,33 @@ en:
       withdraw:
         dollar:
           sum: Minimum amount 100
+        euro:
+          sum: Minimum amount 100
         satoshi:
           sum: Minimum amount 0.001
           fund_extra: Enter a label for this address (optional)
+        nubit:
+          sum: Minimum amount 0.01
+          fund_extra: Enter a label for this address (optional)
     hints:
       deposit:
+        bank:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+          member_name: "<span class='text-danger'>Recharge bank account name must
+            match the name with your real name authentication</span>"
+          sn: "<span class='text-danger'>Please copy the SN in your bank transfer's
+            message, otherwise we can not process your order quickly.</span>"
         dollar:
           sum: "<a target='_balance' href='#'>Fee structure</a>"
-          member_name: "<span class='text-danger'>Recharge dollar account name must
+          member_name: "<span class='text-danger'>Recharge bank account name must
             match the name with your real name authentication</span>"
-          sn: "<span class='text-danger'>Please copy the SN in your dollar transfer's
+          sn: "<span class='text-danger'>Please copy the SN in your bank transfer's
+            message, otherwise we can not process your order quickly.</span>"
+        euro:
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+          member_name: "<span class='text-danger'>Recharge bank account name must
+            match the name with your real name authentication</span>"
+          sn: "<span class='text-danger'>Please copy the SN in your bank transfer's
             message, otherwise we can not process your order quickly.</span>"
       two_factor:
         otp_secret: We recommend that you back up QR code image or ciphertext to avoid
@@ -1131,8 +1328,20 @@ en:
       id_document:
         name: Please fill in the name which is consistent with your Credentials.
       withdraw:
+        bank:
+          member_name: "<span class='text-danger'>Withdraw bank account name must
+            match your name used for real-name authentication</span>"
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+          fund_extra: If your dollar is no longer in the list, please contact customer
+            service
         dollar:
-          member_name: "<span class='text-danger'>Withdraw dollar account name must
+          member_name: "<span class='text-danger'>Withdraw bank account name must
+            match your name used for real-name authentication</span>"
+          sum: "<a target='_balance' href='#'>Fee structure</a>"
+          fund_extra: If your dollar is no longer in the list, please contact customer
+            service
+        euro:
+          member_name: "<span class='text-danger'>Withdraw bank account name must
             match your name used for real-name authentication</span>"
           sum: "<a target='_balance' href='#'>Fee structure</a>"
           fund_extra: If your dollar is no longer in the list, please contact customer
@@ -1178,8 +1387,18 @@ en:
       ticket:
         content: More detail
       withdraw:
+        bank:
+          fund_extra: Bank
+          sum: Amount
+          account_balance: Account Balance
+          member_name: Account Holder Name
         dollar:
-          fund_extra: Dollar
+          fund_extra: Bank
+          sum: Amount
+          account_balance: Account Balance
+          member_name: Account Holder Name
+        euro:
+          fund_extra: Bank
           sum: Amount
           account_balance: Account Balance
           member_name: Account Holder Name
@@ -1199,7 +1418,33 @@ en:
           member_name: Account
   admin:
     deposits:
+      banks:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+        update:
+          blank_txid: TxID can't be blank
       dollars:
+        index:
+          oneday: Requests in the last 24 hours
+          available: All Pending Requests
+        show:
+          alert: Recharge cannot be located.
+          notice: The recharge have been successful.
+          deposit: Deposit Request
+          accept: Accept
+          target_deposit: Wire Transfer
+          confirm: Confirm recharge?
+        update:
+          blank_txid: TxID can't be blank
+      euros:
         index:
           oneday: Requests in the last 24 hours
           available: All Pending Requests
@@ -1284,7 +1529,33 @@ en:
           amount: Total Amount
           fee: Fee
     withdraws:
+      banks:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data
       dollars:
+        index:
+          one: Pending withdrawal Orders
+          all: Twenty-four hours Orders
+          empty: No Data
+        show:
+          process: Process
+          succeed: Succeed
+          reject: Reject
+          succeed_confirm: Confirm Process?
+          reject_confirm: Confirm Reject?
+          withdraw: Withdraw
+          empty: No Data
+      euros:
         index:
           one: Pending withdrawal Orders
           all: Twenty-four hours Orders
@@ -1406,7 +1677,25 @@ en:
       member_name: Member
       state_and_actions: State/Actions
       currency_obj_key_text: Currency
+    bank:
+      sn: SN
+      amount: Amount
+      created_at: At
+      fund_source: Fund Source
+      memo: Memo
+      member_name: Member
+      state_and_actions: State/Action
+      currency_obj_key_text: Currency
     dollar:
+      sn: SN
+      amount: Amount
+      created_at: At
+      fund_source: Fund Source
+      memo: Memo
+      member_name: Member
+      state_and_actions: State/Action
+      currency_obj_key_text: Currency
+    euro:
       sn: SN
       amount: Amount
       created_at: At
@@ -1464,8 +1753,9 @@ en:
     fund_source:
       category:
         satoshi: Bitcoin
-        dollar: Dollar
+        dollar: US Dollar
         nubit: NuBit
+        euro: Euro
     id_document:
       id_document_type:
         id_card: ID Card
@@ -1489,36 +1779,36 @@ en:
     footer: This is an automatically generated email, please do not reply, if you have any question, please <a href="mailto:%{contact_mail}">contact us</a>.
   comment_mailer:
     admin_notification:
-      subject: "[NUBOT] User reply a ticket"
+      subject: "[NUBOT TEST EXCHANGE] User reply a ticket"
       notification_content: User %{email} reply a ticket, please follow the link below to see the detail
     user_notification:
-      subject: "[NUBOT] Your ticket got a new reply"
+      subject: "[NUBOT TEST EXCHANGE] Your ticket got a new reply"
       notification_content: 'Your ticket got a new reply, please follow the link below to see the detail:'
   deposit_mailer:
     accepted:
-      subject: "[Nubot] Your deposit has been credited into your account"
+      subject: "[Nubot TEST EXCHANGE] Your deposit has been credited into your account"
       content: Your %{currency} deposit has been credited into your account.
   member_mailer:
     notify_signin:
-      subject: "[NUBOT] You have just signed in"
+      subject: "[NUBOT TEST EXCHANGE] You have just signed in"
       just_signed_in: You have just signed in.
     google_auth_activated:
-      subject: "[NUBOT] Google authenticator activated"
+      subject: "[NUBOT TEST EXCHANGE] Google authenticator activated"
       google_auth_activated: You have activated google authenticator successfully
     google_auth_deactivated:
-      subject: "[NUBOT] Google authenticator deactivated"
+      subject: "[NUBOT TEST EXCHANGE] Google authenticator deactivated"
       google_auth_deactivated: You have deactivated google authenticator successfully
     sms_auth_activated:
-      subject: "[NUBOT] SMS authenticator activated"
+      subject: "[NUBOT TEST EXCHANGE] SMS authenticator activated"
       sms_auth_activated: You have activated SMS authenticator successfully
     sms_auth_deactivated:
-      subject: "[NUBOT] SMS authenticator deactivated"
+      subject: "[NUBOT TEST EXCHANGE] SMS authenticator deactivated"
       sms_auth_deactivated: You have deactivated SMS authenticator successfully
     reset_password_done:
-      subject: "[NUBOT] Your password changed"
+      subject: "[NUBOT TEST EXCHANGE] Your password changed"
       successful: Your password has been changed successfully.
     phone_number_verified:
-      subject: "[NUBOT] Your phone number verified"
+      subject: "[NUBOT TEST EXCHANGE] Your phone number verified"
       verified: 'Your phone number verified: %{phone_number}'
   system_mailer:
     daily_stats:
@@ -1531,33 +1821,33 @@ en:
       trades_change_total: Trades Changes Total
   ticket_mailer:
     admin_notification:
-      subject: "[NUBOT] User created a new ticket"
+      subject: "[NUBOT TEST EXCHANGE] User created a new ticket"
       admin_notification_content: User %{email} created a new ticket, please follow the link below to see the detail
     author_notification:
-      subject: "[NUBOT] Thank you for submit ticket"
+      subject: "[NUBOT TEST EXCHANGE] Thank you for submit ticket"
       thanks_for_submit_ticket: Thank you for submit ticket to us, we will get back to you as soon as possible.
   token_mailer:
     activation:
-      subject: "[Nubot] Account Activation"
+      subject: "[Nubot TEST EXCHANGE] Account Activation"
       click_to_verify: 'Thank you for signing up on Nubot, please follow this link to verify your Email:'
       unable_to_click: Copy and open the link in your browser if you are unable to click and visit it.
       link_expire: The link expires in 30 minutes.
     reset_password:
-      subject: "[Nubot] Please Reset Your Password"
+      subject: "[Nubot TEST EXCHANGE] Please Reset Your Password"
       hi: Hi,
       follow_the_link: 'Please follow this link to reset your password within 30 minutes:'
   withdraw_mailer:
     submitted:
-      subject: "[Nubot] Your withdraw state update"
+      subject: "[Nubot TEST EXCHANGE] Your withdraw state update"
       content: The request of your %{currency} withdrawal has been successfully submitted, We will process it as soon as possible. Please be patient with us. Contact us if you have any questions.
     processing:
-      subject: "[Nubot] Your withdraw state update"
+      subject: "[Nubot TEST EXCHANGE] Your withdraw state update"
       content: The request of your %{currency} withdrawal is in process. Please be patient with us. Contact us if you have any questions.
     done:
-      subject: "[Nubot] Your withdraw state update"
+      subject: "[Nubot TEST EXCHANGE] Your withdraw state update"
       content: The request of your %{currency} withdrawal is complete. Please check it out. Contact us if you have any questions.
     withdraw_state:
-      subject: "[Nubot] Your withdraw state update"
+      subject: "[Nubot TEST EXCHANGE] Your withdraw state update"
       your_state: 'Your withdrawal state: '
 
   'true': true
@@ -1919,10 +2209,24 @@ en:
         alert:
           phone_number_error: phone number error
   withdraw_channel:
+    bank:
+      key: Bank Transfer
+      title: Bank Transfer
+      intro: Bank transfer deposits, recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
     dollar:
-      key: Dollar Transfer
-      title: Dollar Transfer
-      intro: Dollar transfer deposits, Recommend for large recharge
+      key: Bank Transfer
+      title: Bank Transfer
+      intro: Bank transfer deposits, recommend for large recharge
+      latency: 30 minutes
+      transfer: Manual
+      go: Withdraw
+    euro:
+      key: Bank Transfer
+      title: Bank Transfer
+      intro: Bank transfer deposits, recommend for large recharge
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
@@ -1933,9 +2237,40 @@ en:
       latency: 30 minutes
       transfer: Manual
       go: Withdraw
+    nubit:
+      key: Blockchain
+      title: Nu Blockchain
+      intro: Withdraw NuBit to your own Nu wallet
+      latency: 10 minutes
+      transfer: Manual
+      go: Withdraw
   withdraws:
     invalid_address: is not valid. You can not withdraw to this address.
+  withdraws/bank:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: Processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Canceld
+      failed: Failed
   withdraws/dollar:
+    aasm_state:
+      submitting: Submitting
+      submitted: Submitted
+      rejected: Rejected
+      accepted: Accepted
+      suspect: Suspect
+      processing: Processing
+      done: Done
+      almost_done: Almost Done
+      canceled: Canceld
+      failed: Failed
+  withdraws/euro:
     aasm_state:
       submitting: Submitting
       submitted: Submitted

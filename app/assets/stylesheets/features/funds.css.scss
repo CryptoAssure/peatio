@@ -86,13 +86,16 @@
     border-radius: 3px;
     background-color: #333;
     &.label-usd {
-      background-color: #EC6060;
+      background-color: #85BB65;
     }
     &.label-btc {
-      background-color: #DDCD1B;
+      background-color: #F69619;
     }
     &.label-nbt {
       background-color: #DDCD1B;
+    }
+    &.label-eur {
+      background-color: #003399;
     }
   }
   .currency-logo {

@@ -20,3 +20,13 @@
   sort_order: 3
   min_confirm: 1
   max_confirm: 3
+- id: 800
+  key: euro
+  currency: eur
+  sort_order: 4
+  bank_accounts:
+    -
+      bank: 'Your Bank Name'
+      branch: 'Your Bank Branch'
+      holder: 'Your Account Holder'
+      account: 'Your Account Number'
